@@ -1,0 +1,29 @@
+{
+  "name": "gasmonclientjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CorndelWithSoftwire/GasMonClientJs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CorndelWithSoftwire/GasMonClientJs/issues"
+  },
+  "homepage": "https://github.com/CorndelWithSoftwire/GasMonClientJs#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.472.0"
+  }
+}
