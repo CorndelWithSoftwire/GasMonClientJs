@@ -6,7 +6,6 @@ export default class QueueReceiver {
       AWS.config.loadFromPath('resources/credentials.json');
       this.sqs = new AWS.SQS({ apiVersion: '2012-11-05' });
       this.queueUrl = queueUrl
-      this.messages = [];
     }
   
     // Return a promise containing the top message and delete that from the queue.

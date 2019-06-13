@@ -1,5 +1,4 @@
-import QueueReceiver from './QueueReceiver';
-import config from '../resources/config';
+import City from './types/city';
 
-const queueReceiver = new QueueReceiver(config.queueUrl);
-queueReceiver.receive().then((message) => console.log(message));
+const city = new City();
+setTimeout(() => city.showEvents(), 10000);
