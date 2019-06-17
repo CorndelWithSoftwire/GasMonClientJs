@@ -1,15 +1,39 @@
 export default class Location {
-    constructor(location){
+    constructor(location) {
         this.x = location.x;
         this.y = location.y;
         this.id = location.id;
-        this.events = [];
+        this.average = 0;
+        this.valueArray = [];
     }
 
-    addEvent(eventToAdd){
-        if (this.events.every(event => event.id !== eventToAdd.id)){
-            this.events.push(eventToAdd);
-        }
-        //console.log(this.events);
+
+
+
+    addEvent(eventToAdd) {
+
+        this.valueArray.push(eventToAdd.id)
+        this.average = averageCal(valueArray);
     }
-}
+
+    averageCal(arr) {
+        let sum,
+         avg;
+     for (let i = 0; i <=arr.length; i++) {
+          sum+=i
+ 
+     }
+     avg = sum/arr.length;
+     console.log('this is the average', average);
+     console.log('this is the sum', sum);
+     return avg;
+    }
+     
+};
+
+    
+
+
+
+
+

@@ -26,18 +26,27 @@ export default class City {
 
 
     compareLocations() {
-        const eventsToCheck = this.events.slice(0)
-        this.events = [];
-        eventsToCheck.forEach(event => {
-            let matchedLocation = this.locations.find(location => location.id === event.locationId)
+        let locationSet = new Set(locations.map(l => l.id));
+        let eventLocationsId = (this.locations.map(e => e.id));
+
+        for (let location of eventLocationsId){
+            if(locationSet.has(location)){
+                Location.addEvent(location);
+            }     
+        }
+
+        // const eventsToCheck = this.events.slice(0)
+        // this.events = [];
+        // eventsToCheck.forEach(event => {
+        //     let matchedLocation = this.locations.find(location => location.id === event.locationId)
             
-            if (matchedLocation) {
-                console.log(matchedLocation)
-                matchedLocation.addEvent(event)
-            } else {
-                console.log('Event was found that did not match a location');
-            }
-        });
+        //     if (matchedLocation) {
+        //         console.log(matchedLocation)
+        //         matchedLocation.addEvent(event)
+        //     } else {
+        //         console.log('Event was found that did not match a location');
+        //     }
+        // });
 
     }
 
