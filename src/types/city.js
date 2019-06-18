@@ -5,10 +5,11 @@ import locations from '../../resources/locations';
 export default class City {
     constructor() {
         this.runner = this.makeRunner();
-        this.locations = this.getLocations();
+        this.locations = this.makeLocations();
         this.events = [];
         this.startComparing();
     }
+    
 
     makeRunner() {
         let runner = new Runner(event => this.events.push(event));
@@ -16,41 +17,31 @@ export default class City {
         return runner;
     }
 
-    getLocations() {
-        return locations.map(location => new Location(location));
+
+    makeLocations() {
+        this.locationsArray = locations.map(location => {
+            return new Location(location);
+        })
     }
+
+
+    eventCompare() {
+        for (let i = 0; i < this.events.length; i++) {
+            for (let j = 0; j < this.locationsArray.length; j++) {
+                if (this.events[i].locationId === this.locationsArray[j].id) {
+                    this.locationsArray[j].addEvent(this.events[i]);
+                }
+            }
+        }
+    }
+
 
     showEvents() {
         console.log(this.events);
     }
 
 
-    compareLocations() {
-        let locationSet = new Set(locations.map(l => l.id));
-        let eventLocationsId = (this.locations.map(e => e.id));
-
-        for (let location of eventLocationsId){
-            if(locationSet.has(location)){
-                Location.addEvent(location);
-            }     
-        }
-
-        // const eventsToCheck = this.events.slice(0)
-        // this.events = [];
-        // eventsToCheck.forEach(event => {
-        //     let matchedLocation = this.locations.find(location => location.id === event.locationId)
-            
-        //     if (matchedLocation) {
-        //         console.log(matchedLocation)
-        //         matchedLocation.addEvent(event)
-        //     } else {
-        //         console.log('Event was found that did not match a location');
-        //     }
-        // });
-
-    }
-
     startComparing() {
-        setInterval(() => this.compareLocations(), 5000);
+        setInterval(() => this.eventCompare(), 5000);
     }
 }
